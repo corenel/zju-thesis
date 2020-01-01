@@ -1,0 +1,108 @@
+% !Mode:: "TeX:UTF-8"
+% !TEX builder = LATEXMK
+% !TEX program = xelatex
+
+% TODO disable draft mode and enable anon if necessary
+\documentclass[master,twoside,nocpsupervisor]{style/zjuthesis}
+% \documentclass[anon,master,twoside,nocpsupervisor]{style/zjuthesis}
+
+% 插图路径设置，图片放在figures 文件夹下。一般来说论文的插图比较多，通常按章节存
+% 放，因此可以在以下命令中在按章节添加存放图片的文件夹路径。如以下这个路径中 ./
+% 代表当前main.tex所在的目录，就是一般所说的当前文件夹；figures 文件夹就是子文件
+% 夹，存放正文及附录中要用到的所有的图片，在figures 文件夹中的子文件夹就是存放各
+% 个章节图片的文件夹，一般命名与相应章节的名字相同，如intro 章节用到的图片全放在
+% 了intro 这个子文件夹下。
+% \graphicspath{%
+%     {./figures/intro/}%
+% }
+\input{thesis/symbols.tex}
+\input{thesis/figures.tex}
+
+% 论文中文标题
+\title{研究生毕业论文总结报告\LaTeX{}模板}
+% 论文英文标题
+\englishtitle{\LaTeX{} Template for Thesis}
+% 作者，就是你的名字
+\author{郝仁}
+% 分类号
+\classification{TM863}
+% 单位代码
+\serialnumber{10335}
+% 密级
+\secretlevel{公开}
+% 学号
+\studentnumber{54321}
+% 指导教师
+\supervisor{渡鸦12345}
+% 合作导师，如果没有合作导师，就在\documentclass选项栏中加上"nocpsupervisor"。
+\cpsupervisor{无}
+% 专业名称
+\major{时空管理局}
+% 研究方向
+\research{世界和平}
+% 所在学院
+\institute{希灵帝国}
+% 提交日期
+\submitdate{\today}
+
+% 中文题名页
+\reviewerA{}
+\reviewerB{}
+\reviewerC{}
+\reviewerD{}
+\reviewerE{}
+\chairperson{}
+\commissionerA{}
+\commissionerB{}
+\commissionerC{}
+\commissionerD{}
+\commissionerE{}
+\defencedate{\today}
+
+% 英文题名页
+\enreviewerA{}
+\enreviewerB{}
+\enreviewerC{}
+\enreviewerD{}
+\enreviewerE{}
+\enchairperson{}
+\encommissionerA{}
+\encommissionerB{}
+\encommissionerC{}
+\encommissionerD{}
+\encommissionerE{}
+\eendefencedate{\today}
+
+\begin{document}
+
+\maketitle
+% \ZJUmakecover
+% \ZJUmakeCNtitlepage
+% \ZJUmakeENtitlepage
+
+\frontmatter
+\include{thesis/thanks}
+\include{thesis/abstract_chinese}
+\include{thesis/abstract_english}
+
+% 正文目录：
+\tableofcontents
+% 插图目录：
+% \listoffigures
+% 表格目录：
+% \listoftables
+% \include{contents/denotation}
+
+\mainmatter
+
+\include{thesis/introduction}
+
+\backmatter
+
+\bibliography{thesis}
+% \nocite{*} % to show the entire references, annotate it if need.
+
+% \appendix
+% \include{thesis/appendixA}
+% \include{thesis/appendixB}
+\end{document}
