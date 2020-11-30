@@ -59,6 +59,8 @@ Created: 2014.09.15 by Sky and Hamburger, Last Modified: 2019.11.26 by Yusu Pan]
 \RequirePackage{lipsum}
 % arydshln
 \RequirePackage{arydshln}
+% graphbox
+\RequirePackage{graphbox}
 % hyperref 宏包可根据交叉引用生成超链接，同时生成 PDF 文档的书签。
 \RequirePackage{hyperref}
 
@@ -81,7 +83,7 @@ Created: 2014.09.15 by Sky and Hamburger, Last Modified: 2019.11.26 by Yusu Pan]
         % anchorcolor=blue,
         % urlcolor=blue,
         hidelinks,          % 隐藏超链接的颜色和边框。
-        draft,                % 草稿模式，提高编译速度，需要时注释掉就可以了。
+        % draft,                % 草稿模式，提高编译速度，需要时注释掉就可以了。
     }
 }
 \AtBeginDocument{
@@ -331,6 +333,7 @@ Created: 2014.09.15 by Sky and Hamburger, Last Modified: 2019.11.26 by Yusu Pan]
 \setCJKmainfont[AutoFakeBold=true]{Adobe Song Std}
 \setCJKsansfont{Adobe Heiti Std}
 \setCJKmonofont{Adobe Fangsong Std}
+
 % \setCJKmainfont[BoldFont={STHeiTi}, ItalicFont={STKaiTi}]{STFangSong}
 % 中文无衬线字体，不知道怎么设置，待以后解决。
 % \setCJKsansfont{}
@@ -547,8 +550,8 @@ Created: 2014.09.15 by Sky and Hamburger, Last Modified: 2019.11.26 by Yusu Pan]
         \end{tabular}
     \end{center}
     \vfill
-    \hfill{\zihao{4}\songti 答辩日期: \ZJUunderline[150pt]{\ZJU@defencedate}}
-    }
+    \hfill{\zihao{4}\songti 答辩日期: \ZJUunderline[150pt]{\if@anon\else\ZJU@defencedate\fi}}
+      }
     %清空变量节省空间
     \global\let\ZJU@reviewerA\@empty
     \global\let\ZJU@reviewerB\@empty
@@ -662,7 +665,7 @@ Created: 2014.09.15 by Sky and Hamburger, Last Modified: 2019.11.26 by Yusu Pan]
 %   \hspace*{30.2ex}    \ZJUunderline[260pt]{\ZJU@encommissionerE}\\
     \vfill
     \hfill{\zihao{4} Date of oral defence：\ZJUunderline[150pt]{%
-    \ZJU@eendefencedate}}}
+    \if@anon\else\ZJU@eendefencedate\fi}}}
         %清空变量节省空间
     \global\let\ZJU@enreviewerA\@empty
     \global\let\ZJU@enreviewerB\@empty
@@ -838,7 +841,7 @@ Created: 2014.09.15 by Sky and Hamburger, Last Modified: 2019.11.26 by Yusu Pan]
                                     {1.6ex \@plus 0.4ex \@minus .2ex}%
                                     {1ex \@plus.2ex}%
                                     {\parindent \z@ \raggedright
-                                     \fangsong\zihao{-4}}}
+                                     \fangsong\zihao{-4}\bfseries}}
 
 %%三级节标题格式设置----小四号仿宋
 \renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
@@ -847,7 +850,7 @@ Created: 2014.09.15 by Sky and Hamburger, Last Modified: 2019.11.26 by Yusu Pan]
                                     {1.4ex \@plus 0.3ex \@minus .2ex}%
                                     {0.9ex \@plus.2ex}%
                                     {\parindent \z@ \raggedright
-                                     \fangsong\zihao{-4}}}
+                                     \fangsong\zihao{-4}\bfseries}}
 %%段落标题格式设置
 \ctexset{
   paragraph={
@@ -861,7 +864,7 @@ Created: 2014.09.15 by Sky and Hamburger, Last Modified: 2019.11.26 by Yusu Pan]
     aftername=~,
     beforeskip=0pt,
     afterskip=1em,
-  }
+  },
 }
 
 \newif\if@frontmatter\@frontmatterfalse
@@ -902,9 +905,10 @@ Created: 2014.09.15 by Sky and Hamburger, Last Modified: 2019.11.26 by Yusu Pan]
 
 %---------- 目录（目次） ----------
 % 重命名章节目录名。
-\renewcommand{\contentsname}{目\texorpdfstring{\ZJUspace}{}次}
+\renewcommand{\contentsname}{目\texorpdfstring{\ZJUspace}{}录}
 % \ctexset{
 %   contentsname=\hfill \zihao{3} {目\texorpdfstring{\ZJUspace}{}次} \hfill,
+
 % }
 % 重命名插图目录名。
 \renewcommand{\listfigurename}{插\texorpdfstring{\ZJUspace}{}图}
@@ -1051,22 +1055,22 @@ Created: 2014.09.15 by Sky and Hamburger, Last Modified: 2019.11.26 by Yusu Pan]
     font=small,         % 标题字体比正文小一号，这里取small。
     % width=0.75\textwidth  % 标题最大宽度为0.75倍正文宽度。
 %TODO:width影响bi-second居中
-    }
+}
 
 % 根据学位论文格式要求，表格的标题必须位于表格上方，插图的标题必须位于插图下方。
 \captionsetup[table]{position=above}
 \captionsetup[figure]{position=below}
 
 % 中英文双语bicaption定义
-\captionsetup[bi-first]{bi-first}
-\captionsetup[bi-second]{bi-second, list=off}
-
 \DeclareCaptionOption{bi-first}[]{%
   \def\tablename{表}%
   \def\figurename{图}}
 \DeclareCaptionOption{bi-second}[]{%
   \def\tablename{Tab}%
   \def\figurename{Fig}}
+
+\captionsetup[bi-first]{bi-first}%
+\captionsetup[bi-second]{bi-second}%
 
 %% 以下为设置浮动对象和文字之间的距离。
 % 版心顶部或者版心底部浮动体之间的垂直距离，默认为12pt plus 2pt minus 2pt。

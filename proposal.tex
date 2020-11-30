@@ -1,0 +1,57 @@
+% !Mode:: "TeX:UTF-8"
+% !TEX builder = LATEXMK
+% !TEX program = xelatex
+\documentclass[master,twoside,nocpsupervisor]{style/zjuproposal}
+
+% 论文中文标题
+\title{基于生成式模型的高效率摸鱼网膜}
+% 论文英文标题
+\englishtitle{High-efficiency Slacing Off Network Based on Generative Models}
+% 作者
+\author{咸鱼}
+% 分类号
+% \classification{TM863}
+% 单位代码
+% \serialnumber{10335}
+% 密级
+% \secretlevel{公开}
+% 学号
+\studentnumber{21700000}
+% 指导教师
+\supervisor{老咸鱼}
+% 合作导师，如果没有合作导师，就在\documentclass选项栏中加上"nocpsupervisor"。
+\cpsupervisor{}
+% 专业名称
+\major{摸鱼科学与工程}
+% 研究方向
+\research{}
+% 所在学院
+\institute{摸鱼科学与工程学院}
+% 提交日期
+% \submitdate{\today}
+\submitdate{2018年12月}
+
+\begin{document}
+\maketitle
+\frontmatter
+% 正文目录：
+\tableofcontents
+% 插图目录：
+% \listoffigures
+% 表格目录：
+% \listoftables
+% \include{contents/denotation}
+\mainmatter
+\include{proposal/0_introduction}
+\include{proposal/1_content}
+\include{proposal/2_technique}
+\include{proposal/3_progress}
+\include{proposal/4_future_work}
+\include{proposal/5_schedule}
+\backmatter
+\bibliography{proposal}
+% \nocite{*} % to show the entire references, annotate it if need.
+% \appendix
+% \include{contents/appendixA}
+% \include{contents/appendixB}
+\end{document}

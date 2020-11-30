@@ -1,0 +1,118 @@
+% 设置为 Beamer 文档类型，设置字体为 10pt，长宽比为16:9，数学字体为 serif 风格
+\documentclass[10pt,aspectratio=169,mathserif]{ctexbeamer}
+
+%%%%-----定义演讲备注-----%%%%
+% These slides also contain speaker notes. You can print just the slides,
+% just the notes, or both, depending on the setting below. Comment out the want
+% you want.
+\usepackage{pgfpages}
+% \setbeameroption{hide notes} % Only slides
+% \setbeameroption{show only notes} % Only notes
+\setbeameroption{show notes on second screen=right} % Both
+
+% To give a presentation with the Skim reader (http://skim-app.sourceforge.net) on OSX so
+% that you see the notes on your laptop and the slides on the projector, do the following:
+%
+% 1. Generate just the presentation (hide notes) and save to slides.pdf
+% 2. Generate onlt the notes (show only nodes) and save to notes.pdf
+% 3. With Skim open both slides.pdf and notes.pdf
+% 4. Click on slides.pdf to bring it to front.
+% 5. In Skim, under "View -> Presentation Option -> Synhcronized Noted Document"
+%    select notes.pdf.
+% 6. Now as you move around in slides.pdf the notes.pdf file will follow you.
+% 7. Arrange windows so that notes.pdf is in full screen mode on your laptop
+%    and slides.pdf is in presentation mode on the projector.
+
+% Give a slight yellow tint to the notes page
+\setbeamertemplate{note page}{\pagecolor{yellow!5}\insertnote}\usepackage{palatino}
+
+% reset to normal colour at the begin of every frame
+% workaround for show notes on second screen
+\makeatletter 
+\def\beamer@framenotesbegin{% at beginning of slide
+    \usebeamercolor[fg]{normal text}
+    \gdef\beamer@noteitems{}% 
+    \gdef\beamer@notes{}% 
+}
+\makeatother
+%%%%%%%%%%%%%%%%%%
+
+%%%%-----导入宏包-----%%%%
+\usepackage{style/zjubeamer}
+\usepackage{xeCJK}
+\usepackage{amsmath,amsfonts,amssymb,bm}
+\usepackage{color}
+\usepackage{graphicx,hyperref,url}
+\usepackage{comment}
+\usepackage{xcolor}
+\usepackage{subcaption}
+\usepackage{booktabs}
+\usepackage{graphbox}
+\usepackage{arydshln}
+% disable this if 'show notes only'
+\usepackage[super,square]{natbib}
+%%%%%%%%%%%%%%%%%%
+
+%%%%-----设置字体-----%%%%
+\setsansfont{Helvetica}
+%\setsansfont{Times New Roman}
+\definecolor{nvidia}{RGB}{102,156,28}
+\definecolor{red}{RGB}{184,13,73}
+\definecolor{darkred}{RGB}{145,12,7}
+\definecolor{orange}{RGB}{242,151,36}
+\definecolor{darkteal}{RGB}{43,106,108}
+\definecolor{darkgrey}{RGB}{64,64,64}
+\definecolor{darkblue}{RGB}{4,37,58}
+\definecolor{tan}{RGB}{225,221,191}
+\definecolor{green}{RGB}{76,131,122}
+\definecolor{darkgreen}{RGB}{42,50,46}
+\definecolor{bluegray}{RGB}{33,36,39}
+\definecolor{brown}{RGB}{110,54,42}
+
+% 设置 Beamer 主题
+\beamertemplateballitem
+\AtBeginSection[]
+{
+  \begin{frame}<beamer>
+    \frametitle{\textbf{目录}}
+    \textbf{\tableofcontents[currentsection]}
+  \end{frame}
+}
+
+%%%%----首页信息设置----%%%%
+\AtBeginDocument{%
+\title[基于自监督学习的摸鱼神经网络]{\fontsize{13pt}{18pt}\selectfont {基于自监督学习的摸鱼神经网络}}
+%%%%----标题设置
+\subtitle{\fontsize{9pt}{14pt}\selectfont \textbf{SlackNet: How to Slack Off Happily via Self-Supervised Learning}}
+%%%%----个人信息设置
+\author[咸鱼]{%
+  \begin{tabular}{ll}%
+    答辩人： & 咸鱼 \tabularnewline%
+    学号：   & 21700000 \tabularnewline%
+    专业：   & 摸鱼技术与工程 \tabularnewline%
+    导师：   & 老咸鱼 \tabularnewline%
+  \end{tabular}
+}
+%%%%----机构信息
+\institute[ZJU]{老和山职业技术学院}
+%%%%----日期信息
+\date[\today]{\today}
+}
+
+% 图像
+\input{beamer/figures}
+\input{beamer/symbols}
+
+\begin{document}
+
+\include{beamer/title}
+\include{beamer/background}
+\include{beamer/idea}
+\include{beamer/content}
+\include{beamer/conclusion}
+\include{beamer/achievements}
+
+\appendix
+\include{beamer/references}
+
+\end{document}

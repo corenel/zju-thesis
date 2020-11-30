@@ -1052,6 +1052,7 @@ Created: 2014.09.15 by Sky and Hamburger, Last Modified: 2019.01.06 by Yusu Pan]
 \captionsetup[bi-first]{bi-first}
 \captionsetup[bi-second]{bi-second, list=off}
 
+% 中英文双语bicaption定义
 \DeclareCaptionOption{bi-first}[]{%
   \def\tablename{表}%
   \def\figurename{图}}
