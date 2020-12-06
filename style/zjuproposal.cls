@@ -15,11 +15,12 @@ Created: 2014.09.15 by Sky and Hamburger, Last Modified: 2019.01.06 by Yusu Pan]
 \DeclareOption{anon}{\@anontrue}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexbook}}
 \ProcessOptions\relax
-\LoadClass[cs4size,fancyhdr,fntef,openright,cap]{ctexbook}
+\LoadClass[zihao=-4,openright,scheme=chinese]{ctexbook}
 
 %---------- 加载宏包 ----------
 % 数学公式
 \RequirePackage{amsmath,amssymb}
+\RequirePackage{fancyhdr}
 % 公式中的粗体
 \RequirePackage{bm}
 % 公式中的括号，例如subnumcases环境
@@ -297,6 +298,10 @@ Created: 2014.09.15 by Sky and Hamburger, Last Modified: 2019.01.06 by Yusu Pan]
 %---------- 本机字体设置 ----------
 \RequirePackage{fontspec}
 \setmainfont{Times New Roman}   %相当于MS Word中的Times New Roman。
+
+% 若Helvetica字体未安装，可使用Tex自带字体代替。
+% \setsansfont{TeX Gyre Heros}    %相当于MS Word中的Helvetica。
+% \setmonofont{TeX Gyre Cursor}   %相当于MS Word中的Courier。
 \setsansfont{Helvetica}    %相当于MS Word中的Helvetica。
 \setmonofont{Courier}   %相当于MS Word中的Courier。
 \RequirePackage{xeCJK}
